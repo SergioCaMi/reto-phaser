@@ -6,7 +6,7 @@ class Example extends Phaser.Scene
     platforms;
     stars;
     player;
-    movement;
+    letters;
 
     preload ()
     {
@@ -79,20 +79,20 @@ class Example extends Phaser.Scene
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
 
         // añadir teclas WAD
-        this.movement = this.input.keyboard.addKeys("W,A,D");
+        this.letters = this.input.keyboard.addKeys("W,A,D");
     }
 
     update ()
     {
 
 
-        if (this.cursors.left.isDown || this.movement.A.isDown)
+        if (this.cursors.left.isDown || this.letters.A.isDown)
         {
             this.player.setVelocityX(-160);
 
             this.player.anims.play('left', true);
         }
-        else if (this.cursors.right.isDown || this.movement.D.isDown)
+        else if (this.cursors.right.isDown || this.letters.D.isDown)
         {
             this.player.setVelocityX(160);
 
@@ -105,7 +105,7 @@ class Example extends Phaser.Scene
             this.player.anims.play('turn');
         }
 
-        if ((this.cursors.up.isDown || this.movement.W.isDown) && this.player.body.touching.down)
+        if ((this.cursors.up.isDown || this.letters.W.isDown) && this.player.body.touching.down)
         {
             this.player.setVelocityY(-330);
         }
