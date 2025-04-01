@@ -9,19 +9,37 @@ Familiarizate un poco con el código del juego y luego implementa los siguientes
 
 ## Requisitos
 
-Para cada requisito del 1 al 4, tan solo hay que cambiar
-una línea de código por requisito.
+Para cada requisito del 1 al 4, tan solo hay que cambiar una línea de código por requisito.
 
-1. El tamaño de la puntuación quiero que sea de un
-tamaño mucho más grande.
-2. El color del texto SCORE debe ser diferente a negro, el que sea, pero que quede bien con el azul de fondo. BONUS: Concretamente, al cliente le haría gracia que pusieramos el amarillo Bumblebee
-3. Las estrellas deben otorgar solo UN punto cada vez
-que las recojamos.
-4. Queremos que el personaje aparezca ahora en la parte
-derecha de la pantalla.
+1. El tamaño de la puntuación quiero que sea de un tamaño mucho más grande.
+      72 this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '50px', fill: '#000' });
+
+2. El color del texto SCORE debe ser diferente a negro, el que sea, pero que quede bien con el azul de fondo. 
+BONUS: Concretamente, al cliente le haría gracia que pusieramos el amarillo Bumblebee
+      72 this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '50px', fill: '#FFD700' });
+
+3. Las estrellas deben otorgar solo UN punto cada vez que las recojamos.
+
+   107 collectStar (player, star)
+    {
+        star.disableBody(true, true);
+        this.score += 1;
+        this.scoreText.setText(`Score: ${this.score}`);
+        
+    }
+}
+
+4. Queremos que el personaje aparezca ahora en la parte derecha de la pantalla.
+      32 this.player = this.physics.add.sprite(700, 450, 'dude');
+
+
 5. Contesta:
    1. ¿Cuál es la función que se ejecuta cuando colisiona el persona y una estrella?
+      107 collectStar (player, star)
+
    2. ¿Cuál es la función que ejecuta el programa para _desactivar_ o hacer desaparecer una estrella?
+      112 star.disableBody(true, true);
+
 6. (difícil). Consulta la documentación de Phaser3; y 
 averigua como hacer que el personaje se pueda mover
 también a izquierda y derecha con las letras A y D; 
